@@ -100,7 +100,7 @@ def vectorizeRaster(infile, outfile, classes, classfile, weight, nodata, smoothi
                 del maskArr
             elif nodata == 'NaN':
                 maskArr = np.zeros(inarr.shape, dtype=np.bool)
-                click.echo(inarr + ' vs ' + nodata)
+                click.echo(inarr)
                 maskArr[np.where(inarr == nodata)] = True
                 inarr = np.ma.array(inarr, mas=maskArr)
                 del maskArr
