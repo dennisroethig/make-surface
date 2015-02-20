@@ -98,6 +98,12 @@ def vectorizeRaster(infile, outfile, classes, classfile, weight, nodata, smoothi
                 maskArr[np.where(inarr == inarr.min())] = True
                 inarr = np.ma.array(inarr, mask=maskArr)
                 del maskArr
+            elif nodata == 'NaN':
+                maskArr = np.zeros(inarr.shape, dtype=np.bool)
+                click.echo(inarr + ' vs ' + nodata)
+                maskArr[np.where(inarr == nodata)] = True
+                inarr = np.ma.array(inarr, mas=maskArr)
+                del maskArr
             elif type(nodata) == int or type(nodata) == float:
                 maskArr = np.zeros(inarr.shape, dtype=np.bool)
                 maskArr[np.where(inarr == nodata)] = True
