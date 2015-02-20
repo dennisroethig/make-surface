@@ -91,7 +91,8 @@ def vectorizeRaster(infile, outfile, classes, classfile, weight, nodata, smoothi
                 nodata = True
 
             simplest = ((src.bounds.top - src.bounds.bottom) / float(src.shape[0]))
-
+            
+            click.echo('nodata: ' + nodata)
             if nodata == 'min':
                 maskArr = np.zeros(inarr.shape, dtype=np.bool)
                 maskArr[np.where(inarr == inarr.min())] = True
